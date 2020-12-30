@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.your.organization.repository</groupId>
+    <artifactId>offline-repo</artifactId>
+    <version>1.0.0</version>
+    <name>Build offline repository</name>
+
+    <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.karaf.tooling</groupId>
+            <artifactId>features-maven-plugin</artifactId>
+            <version>2.2.1</version>
+
+            <executions>
+              <execution>
+                <id>add-features-to-repo</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>add-features-to-repo</goal>
+                </goals>
+                <configuration>
+                  <descriptors>
+                    <!--  Feature Descriptor Files -->
+                    <descriptor>mvn:org.apache.karaf.assemblies.features/standard/2.3.2/xml/features</descriptor>
+                    <descriptor>mvn:org.apache.karaf.assemblies.features/enterprise/2.3.2/xml/features</descriptor> 
+                  </descriptors>
+                  <features>
+                    <!--  Features to add to offline respository -->
+                    <feature>webconsole</feature>
+                    <feature>config</feature>
+                  </features>
+                  <repository>target/offline-repository</repository>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+    </build>
+   
+</project>

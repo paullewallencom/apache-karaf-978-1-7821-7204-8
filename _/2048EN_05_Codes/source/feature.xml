@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features>
+  <feature name="custom-command">
+    <bundle>
+        mvn:com.your.organization/com.your.organization.command 
+    </bundle>
+    <bundle>
+        wrap:file:///Users/heathkesler/test/hsqldb/hsqldb.jar
+    </bundle>
+    <feature>war</feature>
+  </feature>
+</features>
